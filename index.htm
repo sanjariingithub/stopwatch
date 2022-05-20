@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>stop watch</title>
+</head>
+<body>
+    <h1 id="fn"> <b> STOP WATCH </b></h1> <br>   
+    <div class = "container">
+        <span id="hour">0</span>
+        <span>:</span>
+        <span id="min">0</span>
+        <span>:</span>
+        <span id="sec">0</span>
+        
+        </div>
+        <div class="bu">
+            <button id="start"> START </button>
+            <button id="reset"> RESAT  </button>
+            <button id="stop"> STOP </button>
+        </div>
+        <script>
+            var sec=0;
+            var min=0;
+            var hour=0;
+            document.getElementById("start").addEventListener("click",start);
+            function start(){
+            var x = setInterval(incSec,1000);
+            var y= setInterval(incMin,60000);
+            var z= setInterval(incHour,3600000);
+            
+            
+            document.getElementById("stop").addEventListener("click",stop);
+            function stop(){
+                clearInterval(x);
+                clearInterval(y);
+                clearInterval (z);
+
+               
+        }
+    }
+            function incSec(){
+                sec++;
+                console.log("Sec",sec);
+                document.getElementById('sec').innerHTML=sec;
+                if(sec===60){
+                    sec=0;
+                    document.getElementById('sec').innerHTML=sec;
+                }
+            }
+            function incMin(){
+                min++;
+                console.log("Min",min);
+                document.getElementById('min').innerHTML=min + ":";
+                if(min===60){
+                    min=0;
+                    document.getElementById('min').innerHTML=min;
+                }
+            }
+            function incHour(){
+                hour++;
+                console.log("Hour",hour);
+                document.getElementById('hour').innerHTML=hour + ":";               
+            }
+
+            document.getElementById("reset").addEventListener("click",reset);
+            function reset(){
+                hour = 0;
+                min=0;
+                sec=0;
+                document.getElementById('hour').innerHTML='0';
+                document.getElementById('min').innerHTML='0';
+                document.getElementById('sec').innerHTML='0';
+
+            }
+            
+            
+
+            
+        </script>
+</body>
+</html>
